@@ -1,6 +1,6 @@
 # AdressBook
 
-Planning Diagram: https://www.figma.com/file/qk0WhLAvWadJ3KaY1rJDYA/Untitled?node-id=1%3A2
+Planning Diagram: [https://www.figma.com/file/qk0WhLAvWadJ3KaY1rJDYA/Untitled?node-id=1%3A2](https://www.figma.com/file/qk0WhLAvWadJ3KaY1rJDYA/Untitled?node-id=0%3A1)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
