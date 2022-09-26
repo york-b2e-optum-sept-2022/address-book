@@ -24,13 +24,13 @@
 
 <div>
   <label>
-    Birthday: <input [(ngModel)]="contact.birthday">
+    Birthday: <input [(ngModel)]="contact.birthday" type="date">
   </label>
 </div>
 
 <div>
   <label>
-    Meeting Date: <input [(ngModel)]="contact.meetingDate">
+    Meeting Date: <input [(ngModel)]="contact.meetingDate" type="date">
   </label>
 </div>
 
@@ -53,5 +53,5 @@
 </div>
 
 <button (click)="onCancelClick()">Cancel</button>
-<button (click)="onSubmit()">Submit</button>
+<button (click)="onSubmitClick()">Submit</button>
 

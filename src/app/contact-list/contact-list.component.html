@@ -1,9 +1,11 @@
 <button (click)="onClick()">New Contact</button>
-<input>
+<input [ngModel]="searchText" (ngModelChange)="filterList($event)" >
 
 <div class="contact-list">
   <app-contact
-    *ngFor="let contactData of list"
+    *ngFor="let contactData of displayList"
     [contact]="contactData"
+    (onDelete)="deleteContact($event)"
+    (onUpdate)="updateContact($event)"
   ></app-contact>
 </div>

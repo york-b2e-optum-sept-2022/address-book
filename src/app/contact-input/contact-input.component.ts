@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IContact} from "../interfaces/IContact";
 
 @Component({
@@ -8,20 +8,9 @@ import {IContact} from "../interfaces/IContact";
 })
 export class ContactInputComponent implements OnInit {
 
-  contact: IContact = {
-    id: -1,
-    name: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-    birthday: new Date(),
-    meetingDate: new Date(),
-    relation: "",
-    company: "",
-    notes: "",
-  };
-
+  @Input() contact!: IContact;
   @Output() onCancel = new EventEmitter<undefined>();
+  @Output() onSubmit = new EventEmitter<IContact>();
 
   constructor() { }
 
@@ -33,8 +22,11 @@ export class ContactInputComponent implements OnInit {
     this.onCancel.emit();
   }
 
-  onSubmit() {
-    console.log(this.contact)
+  onSubmitClick() {
+    this.contact.birthday = new Date(this.contact.birthday);
+    this.contact.meetingDate = new Date(this.contact.meetingDate);
+
+    this.onSubmit.emit(this.contact)
   }
 
 }

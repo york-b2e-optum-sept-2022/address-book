@@ -3,9 +3,12 @@
   <div>address: {{contact.address}}</div>
   <div>phone number: {{contact.phoneNumber}}</div>
   <div>email: {{contact.email}}</div>
-  <div>birthday: {{contact.birthday}}</div>
-  <div>meeting date: {{contact.meetingDate}}</div>
+  <div>birthday: {{contact.birthday | date }}</div>
+  <div>meeting date: {{contact.meetingDate | date}}</div>
   <div>relation: {{contact.relation}}</div>
   <div>company: {{contact.company}}</div>
   <div>notes: {{contact.notes}}</div>
+
+  <button (click)="onDeleteClick()">Delete</button>
+  <button (click)="onUpdateClick()">Update</button>
 </div>

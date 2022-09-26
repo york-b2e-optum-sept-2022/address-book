@@ -7,14 +7,18 @@
 <div *ngIf="isLoggedIn === true">
 
   <app-contact-list
-    *ngIf="isCreating === false"
+    *ngIf="selectedContact === null"
     [list]="contactList"
     (newContact)="newContact()"
+    (onDelete)="deleteContact($event)"
+    (onUpdate)="updateContactSelect($event)"
   ></app-contact-list>
 
   <app-contact-input
-    *ngIf="isCreating === true"
+    *ngIf="selectedContact !== null"
+    [contact]="selectedContact"
     (onCancel)="cancelCreate()"
+    (onSubmit)="onContactInputSubmit($event)"
   ></app-contact-input>
 
 </div>
