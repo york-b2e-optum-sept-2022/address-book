@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {IContact} from "../interfaces/IContact";
 
 @Component({
@@ -6,20 +6,23 @@ import {IContact} from "../interfaces/IContact";
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit {
+export class ContactListComponent implements OnInit, OnChanges {
 
-  @Input() list!: IContact[];
-  @Output() newContact = new EventEmitter<undefined>();
-  @Output() onDelete = new EventEmitter<string>();
-  @Output() onUpdate = new EventEmitter<string>();
+  @Input() list!: IContact[]; // data coming form the parent component
+  @Output() newContact = new EventEmitter<undefined>(); // sending data to the parent component
+  @Output() onDelete = new EventEmitter<string>(); // sending data to the parent component
+  @Output() onUpdate = new EventEmitter<string>(); // sending data to the parent component
 
   displayList!: IContact[];
   searchText: string = "";
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    this.displayList = [...this.list];
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     this.displayList = [...this.list];
   }
 
