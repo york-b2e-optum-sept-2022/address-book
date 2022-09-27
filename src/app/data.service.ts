@@ -40,7 +40,6 @@ export class DataService {
   ];
 
   constructor(private accountService: AccountService) {
-    console.log(accountService.foo)
   }
 
   setSelectedContact(id: string) {
