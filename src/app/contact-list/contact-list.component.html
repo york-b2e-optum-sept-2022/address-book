@@ -1,9 +1,19 @@
-<button (click)="onClick()">New Contact</button>
-<input [ngModel]="searchText" (ngModelChange)="filterList($event)" >
+<div class="d-flex align-content-center m-3">
+  <button (click)="onClick()" class="btn btn-primary">New Contact</button>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Search</span>
+    <input [ngModel]="searchText" (ngModelChange)="filterList($event)" class="form-control">
+  </div>
+</div>
 
-<div class="contact-list">
-  <app-contact
-    *ngFor="let contactData of displayList"
-    [contact]="contactData"
-  ></app-contact>
+<div class="m-3">
+  <ngb-accordion>
+    <ngb-panel *ngFor="let contactData of displayList" title="{{contactData.name}}">
+      <ng-template ngbPanelContent>
+        <app-contact ngbPanelContent
+          [contact]="contactData"
+        ></app-contact>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>

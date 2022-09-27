@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {IContact} from "./interfaces/IContact";
 import {v4 as uuidv4} from "uuid";
 import {Subject} from "rxjs";
+import {AccountService} from "./account.service";
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,9 @@ export class DataService {
     },
   ];
 
-  constructor() { }
+  constructor(private accountService: AccountService) {
+    console.log(accountService.foo)
+  }
 
   setSelectedContact(id: string) {
     const contact = this.contactList.find(contact => contact.id === id);

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IAccount} from "./interfaces/IAccount";
 import {IContact} from "./interfaces/IContact";
 import {DataService} from "./data.service";
+import {AccountService} from "./account.service";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
     {username: 'scott', password: 'admin'},
   ]
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private accountService: AccountService) {
     this.dataService.$selectedContact.subscribe(
       (selectedContact) => {
         this.selectedContact = selectedContact;

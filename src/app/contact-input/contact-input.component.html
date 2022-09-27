@@ -1,57 +1,52 @@
-<div>
-  <label>
-    Name: <input [(ngModel)]="contact.name">
-  </label>
+<div class="m-3">
+  <div class="input-group mb-3">
+    <span class="input-group-text">Name</span>
+    <input [(ngModel)]="contact.name" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Address</span>
+    <input [(ngModel)]="contact.address" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Phone Number</span>
+    <input [(ngModel)]="contact.phoneNumber" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Email</span>
+    <input [(ngModel)]="contact.email" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Birthday</span>
+    <input [(ngModel)]="contact.birthday" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Meeting Date</span>
+    <input [(ngModel)]="contact.meetingDate" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Relation</span>
+    <input [(ngModel)]="contact.relation" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Company</span>
+    <input [(ngModel)]="contact.company" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">Notes</span>
+    <input [(ngModel)]="contact.notes" class="form-control">
+  </div>
 </div>
 
-<div>
-  <label>
-    Address: <input [(ngModel)]="contact.address">
-  </label>
+<div class="d-flex justify-content-around">
+  <button (click)="onCancelClick()" class="btn btn-danger">Cancel</button>
+  <button (click)="onSubmitClick()" class="btn btn-success">Submit</button>
 </div>
-
-<div>
-  <label>
-    Phone Number: <input [(ngModel)]="contact.phoneNumber">
-  </label>
-</div>
-
-<div>
-  <label>
-    Email: <input [(ngModel)]="contact.email">
-  </label>
-</div>
-
-<div>
-  <label>
-    Birthday: <input [(ngModel)]="contact.birthday" type="date">
-  </label>
-</div>
-
-<div>
-  <label>
-    Meeting Date: <input [(ngModel)]="contact.meetingDate" type="date">
-  </label>
-</div>
-
-<div>
-  <label>
-    Relation: <input [(ngModel)]="contact.relation">
-  </label>
-</div>
-
-<div>
-  <label>
-    Company: <input [(ngModel)]="contact.company">
-  </label>
-</div>
-
-<div>
-  <label>
-    Notes: <input [(ngModel)]="contact.notes">
-  </label>
-</div>
-
-<button (click)="onCancelClick()">Cancel</button>
-<button (click)="onSubmitClick()">Submit</button>
 
