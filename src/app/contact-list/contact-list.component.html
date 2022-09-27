@@ -5,7 +5,5 @@
   <app-contact
     *ngFor="let contactData of displayList"
     [contact]="contactData"
-    (onDelete)="deleteContact($event)"
-    (onUpdate)="updateContact($event)"
   ></app-contact>
 </div>

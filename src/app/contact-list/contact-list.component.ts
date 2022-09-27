@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {IContact} from "../interfaces/IContact";
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-contact-list',
@@ -8,15 +9,14 @@ import {IContact} from "../interfaces/IContact";
 })
 export class ContactListComponent implements OnInit, OnChanges {
 
-  @Input() list!: IContact[]; // data coming form the parent component
-  @Output() newContact = new EventEmitter<undefined>(); // sending data to the parent component
-  @Output() onDelete = new EventEmitter<string>(); // sending data to the parent component
-  @Output() onUpdate = new EventEmitter<string>(); // sending data to the parent component
+  list: IContact[];
 
   displayList!: IContact[];
   searchText: string = "";
 
-  constructor() {}
+  constructor(private dataService: DataService) {
+    this.list = this.dataService.contactList;
+  }
 
   ngOnInit(): void {
     this.displayList = [...this.list];
@@ -33,15 +33,7 @@ export class ContactListComponent implements OnInit, OnChanges {
   }
 
   onClick() {
-    this.newContact.emit();
-  }
-
-  deleteContact(id: string) {
-    this.onDelete.emit(id);
-  }
-
-  updateContact(id: string) {
-    this.onUpdate.emit(id);
+    this.dataService.newContact();
   }
 
 }

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IContact} from "../interfaces/IContact";
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-contact',
@@ -9,21 +10,20 @@ import {IContact} from "../interfaces/IContact";
 export class ContactComponent implements OnInit {
 
   @Input() contact!: IContact;
-  @Output() onDelete = new EventEmitter<string>();
-  @Output() onUpdate = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit(): void {
     console.log(this.contact)
   }
 
   onDeleteClick() {
-    this.onDelete.emit(this.contact.id);
+    this.dataService.deleteContact(this.contact.id);
   }
 
   onUpdateClick() {
-    this.onUpdate.emit(this.contact.id);
+    this.dataService.setSelectedContact(this.contact.id);
   }
 
 }

@@ -1,32 +1,33 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {IContact} from "../interfaces/IContact";
+import {DataService} from "../data.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-contact-input',
   templateUrl: './contact-input.component.html',
   styleUrls: ['./contact-input.component.css']
 })
-export class ContactInputComponent implements OnInit {
+export class ContactInputComponent implements OnInit, OnDestroy {
 
   @Input() contact!: IContact;
-  @Output() onCancel = new EventEmitter<undefined>();
-  @Output() onSubmit = new EventEmitter<IContact>();
 
-  constructor() { }
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy() {
+  }
+
   onCancelClick() {
-    console.log('click')
-    this.onCancel.emit();
+    this.dataService.cancelSelectedContact();
   }
 
   onSubmitClick() {
     this.contact.birthday = new Date(this.contact.birthday);
     this.contact.meetingDate = new Date(this.contact.meetingDate);
-
-    this.onSubmit.emit(this.contact)
+    this.dataService.onContactInputSubmit(this.contact)
   }
 
 }
