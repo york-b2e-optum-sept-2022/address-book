@@ -7,7 +7,7 @@ import {DataService} from "../data.service";
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit, OnChanges {
+export class ContactListComponent {
 
   list: IContact[];
 
@@ -16,14 +16,13 @@ export class ContactListComponent implements OnInit, OnChanges {
 
   constructor(private dataService: DataService) {
     this.list = this.dataService.contactList;
-  }
-
-  ngOnInit(): void {
     this.displayList = [...this.list];
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.displayList = [...this.list];
+    this.dataService.$contactList.subscribe((newList) => {
+      console.log(newList)
+      this.list = newList;
+      this.displayList = [...this.list];
+    })
   }
 
   filterList(searchText: any) {

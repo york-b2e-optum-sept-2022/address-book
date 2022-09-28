@@ -39,6 +39,9 @@ export class DataService {
     },
   ];
 
+  $contactList = new Subject<IContact[]>();
+
+
   constructor(private accountService: AccountService) {
   }
 
@@ -79,6 +82,8 @@ export class DataService {
     this.contactList = this.contactList.filter(
       contact => contact.id !== id
     );
+
+    this.$contactList.next(this.contactList);
   }
 
   onContactInputSubmit(contact: IContact) {
@@ -95,6 +100,7 @@ export class DataService {
   addContact(contact: IContact) {
     contact.id = uuidv4();
     this.contactList.push(contact);
+    this.$contactList.next(this.contactList);
   }
 
   updateContact(updatedContact: IContact) {
@@ -105,6 +111,7 @@ export class DataService {
     }
 
     this.contactList[index] = updatedContact;
+    this.$contactList.next(this.contactList);
   }
 
 }

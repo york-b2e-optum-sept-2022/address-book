@@ -10,9 +10,7 @@
   <ngb-accordion>
     <ngb-panel *ngFor="let contactData of displayList" title="{{contactData.name}}">
       <ng-template ngbPanelContent>
-        <app-contact ngbPanelContent
-          [contact]="contactData"
-        ></app-contact>
+        <app-contact [contact]="contactData"></app-contact>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
